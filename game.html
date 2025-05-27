@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小游戏 - AEGot 我的世界服务器</title>
+    <style>
+        :root {
+            --primary-color: #1A2238;
+            --secondary-color: #4D77FF;
+            --accent-color: #FF6B6B;
+            --text-color: #334155;
+            --light-bg: #F8FAFC;
+            --dark-bg: #0F172A;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #4D77FF, #2563EB);
+            --gradient-accent: linear-gradient(135deg, #FF6B6B, #E11D48);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 15px 25px -3px rgba(0, 0, 0, 0.1), 0 8px 12px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 10px;
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+            --transition-slow: 0.8s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%234D77FF' fill-opacity='0.03'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        header {
+            background-color: rgba(26, 34, 56, 0.95);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 30px;
+            }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--border-radius);
+            position: relative;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-image: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+        
+        nav ul li a:hover {
+            color: var(--white);
+        }
+        
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-image: var(--gradient-primary);
+            border-radius: 2px;
+        }
+        
+        /* 游戏页面样式 */
+        .game-section {
+            padding: 120px 0 80px;
+        }
+        
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .game-board {
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            margin-bottom: 1rem;
+            max-width: 400px;
+            width: 100%;
+            height: 400px;
+            position: relative;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234D77FF' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            touch-action: none; /* 防止触摸事件引起页面滚动 */
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .game-over-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(26, 34, 56, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--border-radius);
+            color: var(--white);
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-fast);
+        }
+        
+        .game-over-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .game-over-overlay h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .game-over-overlay p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .game-over-overlay button {
+            background-image: var(--gradient-accent);
+        }
+        
+        .game-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 1rem;
+            background-color: var(--white);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .game-info div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .game-info span {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .btn {
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-md);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .leaderboard {
+            width: 100%;
+            max-width: 600px;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .leaderboard h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .leaderboard-table th, .leaderboard-table td {
+            padding: 0.75rem;
+            text-align: center;
+        }
+        
+        .leaderboard-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .leaderboard-table tr:nth-child(even) {
+            background-color: rgba(77, 119, 255, 0.1);
+        }
+        
+        .leaderboard-table tr:hover {
+            background-color: rgba(77, 119, 255, 0.2);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 虚拟方向按钮 */
+        .direction-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            max-width: 180px;
+            width: 100%;
+        }
+        
+        .direction-row {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .direction-btn {
+            width: 60px;
+            height: 60px;
+            background-image: var(--gradient-primary);
+            border: none;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+            cursor: pointer;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-fast);
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .direction-btn:active {
+            transform: scale(0.9);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        @media (min-width: 769px) {
+            .direction-buttons {
+                display: none; /* 在桌面端隐藏虚拟按钮 */
+            }
+        }
+        
+        /* 游戏说明样式 */
+        .game-instructions {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            margin-top: 1rem;
+            box-shadow: var(--shadow-sm);
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .game-instructions p {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .game-instructions strong {
+            color: var(--primary-color);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .game-board {
+                max-width: 350px;
+                height: 350px;
+            }
+            
+            .btn-group {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .game-instructions {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-board {
+                max-width: 300px;
+                height: 300px;
+            }
+            
+            .game-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* 加载动画 */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        /* 移动端导航栏样式 */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--primary-color);
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                transition: clip-path 0.4s ease-in-out;
+            }
+            
+            nav.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="./images/logo.png" alt="AEGot 我的世界服务器" class="logo-img">
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="index.html#features">特色玩法</a></li>
+                    <li><a href="index.html#guide">玩家指南</a></li>
+                    <li><a href="index.html#join">加入我们</a></li>
+                    <li><a href="server-status.html">服务器状态</a></li>
+                    <li><a href="leaderboard.html">玩家排行榜</a></li>
+                    <li><a href="game.html">小游戏</a></li>
+                    <li><a href="donate.html">捐赠支持</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="game-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>我的世界贪吃蛇</h2>
+                <p>控制你的蛇收集方块，看看你能获得多高的分数！</p>
+                <div class="game-instructions">
+                    <p><strong>电脑操作：</strong>使用方向键或WASD键控制方向，空格键暂停/继续</p>
+                    <p><strong>手机操作：</strong>在游戏区域上滑动控制蛇的移动方向，或使用屏幕下方的虚拟方向按钮</p>
+                </div>
+            </div>
+            
+            <div class="game-container">
+                <div class="game-controls">
+                    <div class="game-info">
+                        <div>
+                            <p>分数</p>
+                            <span id="score">0</span>
+                        </div>
+                        <div>
+                            <p>最高分</p>
+                            <span id="high-score">0</span>
+                        </div>
+                        <div>
+                            <p>等级</p>
+                            <span id="level">1</span>
+                        </div>
+                    </div>
+                    <div class="btn-group">
+                        <button id="start-btn" class="btn">开始游戏</button>
+                        <button id="pause-btn" class="btn" disabled>暂停</button>
+                    </div>
+                </div>
+                
+                <canvas id="game-board" class="game-board" width="400" height="400"></canvas>
+                
+                <!-- 虚拟方向按钮 -->
+                <div class="direction-buttons">
+                    <div class="direction-row">
+                        <button id="btn-up" class="direction-btn">↑</button>
+                    </div>
+                    <div class="direction-row">
+                        <button id="btn-left" class="direction-btn">←</button>
+                        <button id="btn-right" class="direction-btn">→</button>
+                    </div>
+                    <div class="direction-row">
+                        <button id="btn-down" class="direction-btn">↓</button>
+                    </div>
+                </div>
+                
+                <div class="game-over-overlay" id="game-over">
+                    <h3>游戏结束</h3>
+                    <p>你的分数: <span id="final-score">0</span></p>
+                    <button id="restart-btn" class="btn">再玩一次</button>
+                </div>
+                
+                <div class="leaderboard">
+                    <h3>排行榜</h3>
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>玩家</th>
+                                <th>分数</th>
+                                <th>等级</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <!-- 排行榜数据将通过JavaScript动态生成 -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#features">特色玩法</a>
+                <a href="index.html#guide">玩家指南</a>
+                <a href="index.html#join">加入我们</a>
+                <a href="server-status.html">服务器状态</a>
+                <a href="leaderboard.html">玩家排行榜</a>
+                <a href="game.html">小游戏</a>
+                <a href="donate.html">捐赠支持</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 AEGot 我的世界服务器 - 保留所有权利
+            </div>
+        </div>
+    </footer>
+
+    <!-- 引入游戏脚本 -->
+    <script src="./js/snake-game.js"></script>
+    
+    <!-- 加载动画控制脚本 -->
+    <script>
+       document.addEventListener('DOMContentLoaded', function() {
+           // 获取加载动画元素
+           const loaderWrapper = document.querySelector('.loader-wrapper');
+           
+           // 页面加载完成后，添加隐藏类
+           window.addEventListener('load', function() {
+               setTimeout(function() {
+                   loaderWrapper.classList.add('loader-hidden');
+               }, 800); // 延迟800毫秒后隐藏，让用户能看到动画
+           });
+       });
+    </script>
+    
+    <script>
+        // 移动端菜单切换
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+    </script>

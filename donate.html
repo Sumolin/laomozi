@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捐赠支持 - AEGot 我的世界服务器</title>
+    <style>
+        :root {
+            --primary-color: #1A2238;
+            --secondary-color: #4D77FF;
+            --accent-color: #FF6B6B;
+            --text-color: #334155;
+            --light-bg: #F8FAFC;
+            --dark-bg: #0F172A;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #4D77FF, #2563EB);
+            --gradient-accent: linear-gradient(135deg, #FF6B6B, #E11D48);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 15px 25px -3px rgba(0, 0, 0, 0.1), 0 8px 12px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 10px;
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+            --transition-slow: 0.8s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%234D77FF' fill-opacity='0.03'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        header {
+            background-color: rgba(26, 34, 56, 0.95);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 30px;
+            }
+            
+            .header-container {
+                padding: 0 1rem;
+            }
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* 捐赠按钮动画效果 */
+        @keyframes donate-pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+                filter: brightness(1);
+            }
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 15px 25px -3px rgba(255, 107, 107, 0.4), 0 10px 10px -2px rgba(255, 107, 107, 0.3);
+                filter: brightness(1.15);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+                filter: brightness(1);
+            }
+        }
+        
+        .back-btn {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .donate-container {
+            max-width: 800px;
+            margin: 120px auto 50px;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        
+        .donate-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .donate-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background-image: var(--gradient-primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .donate-title:hover::after {
+            width: 80%;
+        }
+        
+        .donate-description {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+        
+        .qrcode-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: var(--light-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .qrcode-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-image: var(--gradient-primary);
+        }
+        
+        .qrcode-container:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .qrcode-img {
+            width: 220px;
+            height: 220px;
+            margin-bottom: 1rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            border: 4px solid white;
+            transition: transform 0.3s ease;
+        }
+        
+        .qrcode-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .qrcode-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .thank-you {
+            font-size: 1.3rem;
+            margin-top: 2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-image: var(--gradient-primary);
+        }
+        
+        .copyright {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .donate-container {
+                padding: 1.5rem;
+                margin-top: 100px;
+            }
+            
+            .donate-title {
+                font-size: 2rem;
+            }
+            
+            .qrcode-img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .back-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .donate-container {
+                padding: 1rem;
+            }
+            
+            .donate-title {
+                font-size: 1.8rem;
+            }
+            
+            .qrcode-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .header-container {
+                padding: 0 0.8rem;
+            }
+            
+            .logo-img {
+                height: 28px;
+            }
+            
+            .back-btn {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="./images/logo.png" alt="AEGot MC Logo" class="logo-img">
+            </div>
+            <!-- 简化导航栏，只保留返回主页按钮 -->
+            <a href="./index.html" class="back-btn">返回主页</a>
+        </div>
+    </header>
+
+    <div class="donate-container">
+        <h1 class="donate-title">支持我们</h1>
+        <p class="donate-description">感谢您对AEGot我的世界服务器的支持！您的捐赠将用于服务器的维护和升级，让我们能够提供更好的游戏体验。每一份支持都是对我们工作的肯定和鼓励。</p>
+        
+        <div class="qrcode-container">
+            <img src="./images/qrcode.jpg" alt="捐赠二维码" class="qrcode-img">
+            <p class="qrcode-text">扫描二维码进行捐赠支持我们</p>
+            <p style="margin-top: 10px; color: var(--text-color);">您的每一笔捐赠都将用于：</p>
+            <ul style="text-align: left; margin: 10px auto; display: inline-block;">
+                <li>服务器硬件升级与维护</li>
+                <li>游戏插件购买与定制开发</li>
+                <li>社区活动奖励与福利</li>
+            </ul>
+        </div>
+        
+        <p class="thank-you">感谢您的慷慨支持！</p>
+        <p style="margin-top: 10px; font-style: italic;">您的支持是我们前进的动力</p>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                &copy; 2025 AEGot 我的世界服务器 - 保留所有权利
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

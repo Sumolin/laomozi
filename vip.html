@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIP会员 - AEGot 我的世界服务器</title>
+    <style>
+        :root {
+            --primary-color: #1A2238;
+            --secondary-color: #4D77FF;
+            --accent-color: #FF6B6B;
+            --text-color: #334155;
+            --light-bg: #F8FAFC;
+            --dark-bg: #0F172A;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #4D77FF, #2563EB);
+            --gradient-accent: linear-gradient(135deg, #FF6B6B, #E11D48);
+            --gradient-gold: linear-gradient(135deg, #FFD700, #FFA500);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 15px 25px -3px rgba(0, 0, 0, 0.1), 0 8px 12px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 10px;
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+            --transition-slow: 0.8s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%234D77FF' fill-opacity='0.03'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        header {
+            background-color: rgba(26, 34, 56, 0.95);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 30px;
+            }
+            
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                font-size: 1.4rem;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--border-radius);
+            position: relative;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-image: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+        
+        nav ul li a:hover {
+            color: var(--white);
+        }
+        
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* 捐赠链接特殊样式 */
+        .donate-link {
+            color: var(--accent-color) !important;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .donate-link::after {
+            background-image: var(--gradient-accent) !important;
+        }
+        
+        .donate-link:hover {
+            transform: scale(1.05);
+        }
+
+        /* VIP链接特殊样式 */
+        .vip-link {
+            color: #FFD700 !important;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .vip-link::after {
+            background-image: var(--gradient-gold) !important;
+        }
+        
+        .vip-link:hover {
+            transform: scale(1.05);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            display: inline-block;
+            position: relative;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background-image: var(--gradient-primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .section-title:hover h2::after {
+            width: 80%;
+        }
+
+        /* VIP套餐卡片 */
+        .vip-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .vip-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: all var(--transition-medium);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .vip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .vip-card.premium {
+            border: 2px solid #FFD700;
+            transform: scale(1.05);
+            z-index: 2;
+        }
+        
+        .vip-card.premium:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .vip-card.premium .vip-header {
+            background-image: var(--gradient-gold);
+        }
+        
+        .vip-header {
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .vip-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .vip-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        
+        .vip-duration {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .vip-features {
+            padding: 2rem;
+            flex-grow: 1;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .feature-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .vip-card.premium .feature-list li::before {
+            color: #FFD700;
+        }
+        
+        .buy-btn {
+            display: block;
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all var(--transition-fast);
+            margin-top: auto;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .buy-btn:hover {
+            background-image: linear-gradient(135deg, #2563EB, #4D77FF);
+            letter-spacing: 1px;
+        }
+        
+        .vip-card.premium .buy-btn {
+            background-image: var(--gradient-gold);
+            color: var(--primary-color);
+        }
+        
+        .vip-card.premium .buy-btn:hover {
+            background-image: linear-gradient(135deg, #FFA500, #FFD700);
+        }
+        
+        /* 会员特权部分 */
+        .vip-benefits {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .benefits-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .benefits-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 3px;
+            background-image: var(--gradient-primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+            background-color: rgba(77, 119, 255, 0.05);
+            border-radius: var(--border-radius);
+            transition: all var(--transition-fast);
+        }
+        
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            background-color: rgba(77, 119, 255, 0.1);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .benefit-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 常见问题部分 */
+        .faq-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .faq-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .faq-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 3px;
+            background-image: var(--gradient-primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .faq-question::before {
+            content: 'Q:';
+            color: var(--secondary-color);
+            font-weight: 800;
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .faq-answer {
+            padding-left: 25px;
+        }
+        
+
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-image: var(--gradient-primary);
+        }
+        
+        .copyright {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .vip-plans {
+                grid-template-columns: 1fr;
+            }
+            
+            .vip-card.premium {
+                transform: scale(1);
+                order: -1;
+            }
+            
+            .vip-card.premium:hover {
+                transform: translateY(-10px);
+            }
+            
+            .benefits-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .vip-title {
+                font-size: 1.5rem;
+            }
+            
+            .vip-price {
+                font-size: 2rem;
+            }
+        }
+        
+        /* 推荐标签 */
+        .recommended-badge {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-bottom-left-radius: var(--border-radius);
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="./images/logo.png" alt="AEGot 服务器" class="logo-img">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="index.html#features">特色玩法</a></li>
+                    <li><a href="index.html#guide">玩家指南</a></li>
+                    <li><a href="index.html#join">加入我们</a></li>
+                    <li><a href="server-status.html">服务器状态</a></li>
+                    <li><a href="leaderboard.html">玩家排行榜</a></li>
+                    <li><a href="vip.html" class="vip-link active">VIP会员 👑</a></li>
+                    <li><a href="donate.html" class="donate-link">捐赠支持 ❤️</a></li>
+                </ul>
+            </nav>
+            <a href="./index.html" class="back-btn">返回主页</a>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>VIP会员特权</h2>
+            </div>
+            
+            <!-- VIP套餐卡片 -->
+            <div class="vip-plans">
+                <!-- 基础VIP -->
+                <div class="vip-card">
+                    <div class="vip-header">
+                        <h3 class="vip-title">基础VIP</h3>
+                        <div class="vip-price">¥30</div>
+                        <div class="vip-duration">30天</div>
+                    </div>
+                    <div class="vip-features">
+                        <ul class="feature-list">
+                            <li>专属VIP标识</li>
+                            <li>专属聊天颜色</li>
+                            <li>额外5个家设置</li>
+                            <li>优先进入服务器</li>
+                            <li>每日礼包领取</li>
+                            <li>基础经济加成10%</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="buy-btn">立即购买</a>
+                </div>
+                
+                <!-- 高级VIP -->
+                <div class="vip-card premium">
+                    <div class="recommended-badge">推荐</div>
+                    <div class="vip-header">
+                        <h3 class="vip-title">高级VIP</h3>
+                        <div class="vip-price">¥88</div>
+                        <div class="vip-duration">90天</div>
+                    </div>
+                    <div class="vip-features">
+                        <ul class="feature-list">
+                            <li>专属VIP标识</li>
+                            <li>专属聊天颜色</li>
+                            <li>额外10个家设置</li>
+                            <li>优先进入服务器</li>
+                            <li>每日高级礼包领取</li>
+                            <li>经济加成25%</li>
+                            <li>专属飞行权限</li>
+                            <li>专属粒子特效</li>
+                            <li>专属皮肤上传</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="buy-btn">立即购买</a>
+                </div>
+                
+                <!-- 永久VIP -->
+                <div class="vip-card">
+                    <div class="vip-header">
+                        <h3 class="vip-title">永久VIP</h3>
+                        <div class="vip-price">¥198</div>
+                        <div class="vip-duration">永久有效</div>
+                    </div>
+                    <div class="vip-features">
+                        <ul class="feature-list">
+                            <li>专属VIP标识</li>
+                            <li>专属聊天颜色</li>
+                            <li>额外15个家设置</li>
+                            <li>优先进入服务器</li>
+                            <li>每日豪华礼包领取</li>
+                            <li>经济加成20%</li>
+                            <li>专属飞行权限</li>
+                            <li>专属粒子特效</li>
+                            <li>专属皮肤上传</li>
+                            <li>专属称号定制</li>
+                            <li>专属服务器活动</li>
+                        </ul>
+                    </div>
+                    <a href="#" class="buy-btn">立即购买</a>
+                </div>
+            </div>
+            
+            <!-- 会员特权说明 -->
+            <div class="vip-benefits">
+                <h3 class="benefits-title">会员特权详情</h3>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🏆</div>
+                        <h4 class="benefit-title">专属标识</h4>
+                        <p>在游戏内和聊天中展示您的VIP身份，让其他玩家一眼认出您的尊贵地位。</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🏠</div>
+                        <h4 class="benefit-title">额外家设置</h4>
+                        <p>设置更多的家，让您在游戏世界中的移动更加便捷自由。</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✨</div>
+                        <h4 class="benefit-title">粒子特效</h4>
+                        <p>专属的粒子特效，让您在游戏中更加引人注目。</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💰</div>
+                        <h4 class="benefit-title">经济加成</h4>
+                        <p>获得额外的经济收入加成，让您在游戏中更快积累财富。</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🎁</div>
+                        <h4 class="benefit-title">每日礼包</h4>
+                        <p>每天登录即可领取专属礼包，包含各种游戏资源和道具。</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">✈️</div>
+                        <h4 class="benefit-title">飞行权限</h4>
+                        <p>在特定区域内享受飞行的乐趣，俯瞰美丽的游戏世界。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 常见问题 -->
+            <div class="faq-section">
+                <h3 class="faq-title">常见问题</h3>
+                
+                <div class="faq-item">
+                    <div class="faq-question">如何购买VIP会员？</div>
+                    <div class="faq-answer">点击您想要购买的VIP套餐下方的"立即购买"按钮，按照提示完成支付即可。支付成功后，系统会自动为您的游戏账号激活VIP权限。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">VIP会员是否可以续费？</div>
+                    <div class="faq-answer">是的，您可以随时为您的VIP会员续费。续费时，剩余的VIP时间将会累加到新购买的时间上。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">购买后多久生效？</div>
+                    <div class="faq-answer">一般情况下，支付成功后5分钟内即可生效。如果超过30分钟仍未生效，请联系我们的客服人员。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">VIP特权是否会影响游戏平衡？</div>
+                    <div class="faq-answer">我们精心设计了VIP特权，确保它们提供便利性和个性化体验，同时不会破坏游戏平衡。所有玩家，无论是否是VIP，都能公平地享受游戏的核心内容。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">如果我有其他问题，如何联系客服？</div>
+                    <div class="faq-answer">您可以通过游戏内的留言系统、官方QQ群或者发送邮件至support@aegot-mc.com联系我们的客服团队。我们会在24小时内回复您的问题。</div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+
+    <!-- 支付弹窗样式 -->
+    <style>
+        /* 弹窗背景动画 */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* 弹窗内容动画 */
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* 弹窗内元素逐个显示动画 */
+        @keyframes fadeInUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        /* 关闭按钮动画 */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(90deg); }
+        }
+        
+        #payment-modal {
+            display: none; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0, 0, 0, 0.7); 
+            z-index: 2000; 
+            justify-content: center; 
+            align-items: center;
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+        }
+        
+        #payment-modal.active {
+            opacity: 1;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .modal-content {
+            background-color: white; 
+            padding: 2rem; 
+            border-radius: var(--border-radius); 
+            max-width: 400px; 
+            text-align: center; 
+            position: relative; 
+            box-shadow: var(--shadow-lg);
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        
+        #payment-modal.active .modal-content {
+            animation: slideUp 0.6s ease 0.1s forwards;
+        }
+        
+        #close-modal {
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
+            background: none; 
+            border: none; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        #close-modal:hover {
+            color: var(--accent-color);
+            animation: spin 0.3s ease forwards;
+        }
+        
+        #payment-title {
+            margin-bottom: 1rem; 
+            color: var(--primary-color);
+            opacity: 0;
+        }
+        
+        #payment-description {
+            margin-bottom: 1.5rem;
+            opacity: 0;
+        }
+        
+        .qrcode-container {
+            margin: 1.5rem 0;
+            opacity: 0;
+        }
+        
+        .qrcode-img {
+            width: 200px; 
+            height: 200px; 
+            border-radius: var(--border-radius); 
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease;
+        }
+        
+        .qrcode-img:hover {
+            transform: scale(1.05);
+        }
+        
+        .payment-note {
+            font-size: 0.9rem; 
+            color: var(--text-color); 
+            margin-top: 1rem;
+            opacity: 0;
+        }
+        
+        #payment-modal.active #payment-title {
+            animation: fadeInUp 0.5s ease 0.3s forwards;
+        }
+        
+        #payment-modal.active #payment-description {
+            animation: fadeInUp 0.5s ease 0.4s forwards;
+        }
+        
+        #payment-modal.active .qrcode-container {
+            animation: fadeInUp 0.5s ease 0.5s forwards;
+        }
+        
+        #payment-modal.active .payment-note {
+            animation: fadeInUp 0.5s ease 0.6s forwards;
+        }
+    </style>
+    
+    <!-- 支付弹窗 -->
+    <div id="payment-modal">
+        <div class="modal-content">
+            <button id="close-modal">×</button>
+            <h3 id="payment-title">购买VIP会员</h3>
+            <p id="payment-description">请使用微信或支付宝扫描下方二维码完成支付</p>
+            <div class="qrcode-container">
+                <img src="./images/qrcode.jpg" alt="支付二维码" class="qrcode-img">
+            </div>
+            <p class="payment-note">支付完成后，系统将在5分钟内为您的账号激活VIP权限</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                &copy; 2025 AEGot 我的世界服务器 - 保留所有权利
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 获取所有购买按钮
+        const buyButtons = document.querySelectorAll('.buy-btn');
+        const paymentModal = document.getElementById('payment-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+        const paymentTitle = document.getElementById('payment-title');
+        const paymentDescription = document.getElementById('payment-description');
+
+        // 打开弹窗函数 - 添加丝滑动画效果
+        function openModal() {
+            // 先设置display为flex以显示弹窗
+            paymentModal.style.display = 'flex';
+            
+            // 使用setTimeout确保DOM更新后再添加active类触发动画
+            setTimeout(() => {
+                paymentModal.classList.add('active');
+            }, 10);
+        }
+
+        // 关闭弹窗函数 - 添加丝滑动画效果
+        function closeModal() {
+            // 先移除active类触发关闭动画
+            paymentModal.classList.remove('active');
+            
+            // 等待动画完成后再隐藏弹窗
+            setTimeout(() => {
+                paymentModal.style.display = 'none';
+            }, 500); // 动画持续时间
+        }
+
+        // 为每个购买按钮添加点击事件
+        buyButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 获取VIP类型和价格
+                const vipCard = this.closest('.vip-card');
+                const vipTitle = vipCard.querySelector('.vip-title').textContent;
+                const vipPrice = vipCard.querySelector('.vip-price').textContent;
+                const vipDuration = vipCard.querySelector('.vip-duration').textContent;
+                
+                // 更新弹窗内容
+                paymentTitle.textContent = `购买${vipTitle}`;
+                paymentDescription.textContent = `${vipTitle}（${vipPrice} / ${vipDuration}）请使用微信或支付宝扫描下方二维码完成支付`;
+                
+                // 显示弹窗
+                openModal();
+            });
+        });
+
+        // 关闭弹窗
+        closeModalBtn.addEventListener('click', function() {
+            closeModal();
+        });
+
+        // 点击弹窗外部区域关闭弹窗
+        paymentModal.addEventListener('click', function(e) {
+            if (e.target === paymentModal) {
+                closeModal();
+            }
+        });
+        
+        // 添加键盘ESC键关闭弹窗功能
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && paymentModal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

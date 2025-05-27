@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta name="baidu-site-verification" content="codeva-HIP8P92c7R" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/logo.png" type="image/png">
+    <link rel="icon" href="./images/logo.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/logo.png">
+    <title>AEGot 我的世界服务器</title>
+    <style>
+        :root {
+            --primary-color: #1A2238;
+            --secondary-color: #4D77FF;
+            --accent-color: #FF6B6B;
+            --text-color: #334155;
+            --light-bg: #F8FAFC;
+            --dark-bg: #0F172A;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #4D77FF, #2563EB);
+            --gradient-accent: linear-gradient(135deg, #FF6B6B, #E11D48);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 15px 25px -3px rgba(0, 0, 0, 0.1), 0 8px 12px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 10px;
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+            --transition-slow: 0.8s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4ecfb 100%);
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(77, 119, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 75% 75%, rgba(255, 107, 107, 0.08) 0%, transparent 40%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%234D77FF' fill-opacity='0.05'%3E%3Cpath opacity='.7' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            position: relative;
+            animation: gradientShift 15s ease infinite alternate;
+            background-attachment: fixed;
+            background-size: 100% 100%, 100% 100%, 100px 100px;
+            background-position: 0 0, 0 0, 0 0;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 0%, 0% 0%, 0 0;
+            }
+            100% {
+                background-position: 100% 100%, 100% 100%, 10px 10px;
+            }
+        }
+        
+        header {
+            background-color: rgba(26, 34, 56, 0.95);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 30px;
+            }
+            
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+                background: none;
+                border: none;
+                color: var(--white);
+                font-size: 1.5rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                padding: 0.5rem;
+            }
+            
+            .mobile-menu-btn:hover {
+                transform: rotate(90deg);
+                color: var(--accent-color);
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: rgba(26, 34, 56, 0.98);
+                padding: 80px 1rem 2rem;
+                transition: right 0.4s ease;
+                overflow-y: auto;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+                backdrop-filter: blur(10px);
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem 1rem;
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(77, 119, 255, 0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0;
+                margin-left: 1rem;
+                border: none;
+            }
+            
+            .nav-group.active .dropdown-menu {
+                max-height: 500px;
+                padding: 0.5rem 0;
+                padding: 0.5rem 0;
+            }
+            
+            .nav-group > a::before {
+                margin-left: auto;
+            }
+            
+            .nav-group > a {
+                justify-content: space-between;
+            }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+        
+        nav ul li {
+            margin-left: 1rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--border-radius);
+            position: relative;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-image: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+        
+        nav ul li a:hover {
+            color: var(--white);
+        }
+        
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* 导航分组样式 */
+        .nav-group {
+            position: relative;
+        }
+        
+        .nav-group > a::after {
+            display: none;
+        }
+        
+        .nav-group > a {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-group > a::before {
+            content: '▾';
+            margin-left: 5px;
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-group:hover > a::before {
+            transform: rotate(180deg);
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: rgba(26, 34, 56, 0.95);
+            min-width: 180px;
+            border-radius: var(--border-radius);
+            padding: 0.5rem 0;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu li {
+            margin: 0;
+            width: 100%;
+        }
+        
+        .dropdown-menu li a {
+            padding: 0.7rem 1.2rem;
+            display: block;
+            width: 100%;
+            border-radius: 0;
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-menu li a:hover {
+            background-color: rgba(77, 119, 255, 0.2);
+            padding-left: 1.5rem;
+        }
+        
+        .dropdown-menu li a::after {
+            display: none;
+        }
+        
+        /* 特殊链接样式 */
+        .donate-link, .vip-link {
+            position: relative;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .donate-link {
+            color: var(--accent-color) !important;
+        }
+        
+        .vip-link {
+            color: var(--secondary-color) !important;
+        }
+        
+        .donate-link::after {
+            background-image: var(--gradient-accent) !important;
+        }
+        
+        .vip-link::after {
+            background-image: var(--gradient-primary) !important;
+        }
+        
+        .donate-link:hover, .vip-link:hover {
+            transform: scale(1.05);
+        }
+        
+        /* 活跃状态指示器 */
+        .nav-links li a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+        
+        .nav-links li a.active::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0.5rem;
+        }
+        
+        .mobile-menu-btn:hover {
+            transform: rotate(90deg);
+            color: var(--accent-color);
+        }
+        
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(15, 23, 42, 0.9));
+            z-index: -1;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all var(--transition-fast);
+            margin: 0 0.5rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: var(--gradient-primary);
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            filter: brightness(1.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px) scale(1.2);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        .btn-accent {
+            background-image: var(--gradient-accent);
+        }
+        
+        .btn-accent::before {
+            background-image: var(--gradient-accent);
+        }
+        
+        /* 浮动装饰元素 */
+        .floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .floating-cube {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+        
+        .floating-cube-1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 8s;
+        }
+        
+        .floating-cube-2 {
+            top: 60%;
+            left: 85%;
+            animation-delay: 1s;
+            animation-duration: 7s;
+        }
+        
+        .floating-cube-3 {
+            top: 30%;
+            left: 80%;
+            animation-delay: 2s;
+            animation-duration: 9s;
+        }
+        
+        .floating-cube-4 {
+            top: 70%;
+            left: 15%;
+            animation-delay: 3s;
+            animation-duration: 6s;
+        }
+        
+        .floating-cube-5 {
+            top: 15%;
+            left: 50%;
+            animation-delay: 4s;
+            animation-duration: 10s;
+        }
+        
+        .floating-cube-6 {
+            top: 80%;
+            left: 60%;
+            animation-delay: 5s;
+            animation-duration: 8s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(-3deg);
+            }
+            75% {
+                transform: translateY(-15px) rotate(2deg);
+            }
+        }
+        
+        /* 服务器状态卡片 */
+        .server-status-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+        
+        .status-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .status-icon {
+            font-size: 2rem;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+        
+        .status-info {
+            flex: 1;
+        }
+        
+        .status-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.3rem;
+        }
+        
+        .status-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        /* 主要按钮组 */
+        .hero-buttons {
+            margin: 2rem 0;
+            animation: fadeInUp 1s ease-out 1.1s both;
+        }
+        
+        /* 快速功能按钮 */
+        .quick-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 1.3s both;
+        }
+        
+        .quick-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            min-width: 80px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .quick-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            color: var(--secondary-color);
+        }
+        
+        .quick-icon {
+            font-size: 1.5rem;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+        }
+        
+        .quick-text {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* 服务器地址快速复制 */
+        .server-address-widget {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem auto 0;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out 1.5s both;
+        }
+        
+        .address-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 0.8rem;
+        }
+        
+        .address-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1rem;
+        }
+        
+        .address-text {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            letter-spacing: 1px;
+        }
+        
+        .address-copy-btn {
+            background: var(--accent-color);
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .address-copy-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 捐赠按钮动画效果 */
+        @keyframes donate-pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+                filter: brightness(1);
+            }
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 15px 25px -3px rgba(255, 107, 107, 0.4), 0 10px 10px -2px rgba(255, 107, 107, 0.3);
+                filter: brightness(1.15);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+                filter: brightness(1);
+            }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .floating-cube {
+                font-size: 1.5rem;
+            }
+            
+            .server-status-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.8rem;
+            }
+            
+            .status-card {
+                padding: 1rem;
+            }
+            
+            .quick-actions {
+                gap: 0.8rem;
+            }
+            
+            .quick-btn {
+                min-width: 70px;
+                padding: 0.8rem;
+            }
+            
+            .quick-text {
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .server-status-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .floating-cube {
+                font-size: 1.2rem;
+            }
+        }
+        
+        section {
+            padding: 5rem 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            display: inline-block;
+            position: relative;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background-image: var(--gradient-primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .section-title:hover h2::after {
+            width: 80%;
+        }
+        
+        .features {
+            background-color: var(--white);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-image: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(77, 119, 255, 0.2);
+        }
+        
+        .feature-card:hover::after {
+            transform: scaleX(1);
+        }
+        
+        .feature-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            transition: all var(--transition-medium);
+            position: relative;
+        }
+        
+        .feature-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 70%, rgba(0,0,0,0.2) 100%);
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+        }
+        
+        .feature-card:hover .feature-img {
+            transform: scale(1.05);
+        }
+        
+        .feature-card:hover .feature-img::after {
+            opacity: 1;
+        }
+        
+        .feature-content {
+            padding: 1.5rem;
+        }
+        
+        .feature-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .guide {
+            background-color: var(--light-bg);
+        }
+        
+        .guide-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .guide-item {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-medium);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+        
+        .guide-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-image: var(--gradient-primary);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s ease;
+        }
+        
+        .guide-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .guide-item:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .guide-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .guide-item h3 span {
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .guide-item:hover h3 span {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: var(--shadow-md);
+        }
+        
+
+        
+        
+        
+        .join {
+            background-color: var(--dark-bg);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .join-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .server-info {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1.5rem 0;
+            text-align: left;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+        
+        .server-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(77, 119, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity var(--transition-medium), transform var(--transition-medium);
+        }
+        
+        .server-info:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(77, 119, 255, 0.3);
+        }
+        
+        .server-info:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .server-info p {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .server-info strong {
+            min-width: 100px;
+            display: inline-block;
+            color: var(--secondary-color);
+        }
+        
+        .copy-btn {
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            margin-left: 0.5rem;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            white-space: nowrap;
+        }
+        
+        .copy-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+        
+        .copy-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-md);
+            filter: brightness(1.1);
+        }
+        
+        .copy-btn:hover::before {
+            transform: translateX(0);
+        }
+        
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+        
+        .download-btn {
+            background-image: var(--gradient-accent);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            z-index: -1;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-md);
+            filter: brightness(1.1);
+        }
+        
+        .download-btn:hover::before {
+            transform: translateX(0);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* 确保所有按钮有一致的悬停效果 */
+        .btn:hover {
+            transform: translateY(-3px) scale(1.2);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 0 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-image: var(--gradient-primary);
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links a:hover {
+            color: var(--white);
+            background-image: var(--gradient-primary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 15px 25px -3px rgba(255, 107, 107, 0.3), 0 10px 10px -2px rgba(255, 107, 107, 0.2);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(77, 119, 255, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(77, 119, 255, 0.8);
+            }
+            100% {
+                box-shadow: 0 0 5px rgba(77, 119, 255, 0.5);
+            }
+        }
+        
+        /* 滚动动画类 */
+        .feature-card, .guide-item, .server-info, .section-title {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
+        }
+        
+        .feature-card.animate, .guide-item.animate, .server-info.animate, .section-title.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero h1 {
+            animation: fadeInUp 1.2s ease-out both;
+        }
+        
+        .hero p {
+            animation: fadeInUp 1.2s ease-out 0.3s both;
+        }
+        
+        .hero .btn {
+            animation: fadeInUp 1.2s ease-out 0.6s both;
+        }
+        
+        .logo-img {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .feature-card:nth-child(1).animate {
+            transition-delay: 0.1s;
+        }
+        
+        .feature-card:nth-child(2).animate {
+            transition-delay: 0.2s;
+        }
+        
+        .feature-card:nth-child(3).animate {
+            transition-delay: 0.3s;
+        }
+        
+        .guide-item:nth-child(1).animate {
+            transition-delay: 0.1s;
+        }
+        
+        .guide-item:nth-child(2).animate {
+            transition-delay: 0.2s;
+        }
+        
+        .guide-item:nth-child(3).animate {
+            transition-delay: 0.3s;
+        }
+        
+        .guide-item:nth-child(4).animate {
+            transition-delay: 0.4s;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+                z-index: 1001;
+                background: none;
+                border: none;
+                color: var(--white);
+                font-size: 1.5rem;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                padding: 0.5rem;
+            }
+            
+            #main-nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: rgba(26, 34, 56, 0.98);
+                padding: 80px 1rem 2rem;
+                transition: right 0.4s ease;
+                overflow-y: auto;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+                backdrop-filter: blur(10px);
+            }
+            
+            #main-nav.active {
+                right: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 0.8rem 1rem;
+                width: 100%;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background-color: rgba(77, 119, 255, 0.1);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                padding: 0;
+                margin-left: 1rem;
+                border: none;
+            }
+            
+            .nav-group.active .dropdown-menu {
+                max-height: 500px;
+                padding: 0.5rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                margin: 1rem auto;
+                width: 80%;
+            }
+            
+            .server-info p {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 1.5rem;
+            }
+            
+            .server-info strong {
+                margin-bottom: 0.5rem;
+            }
+            
+            .copy-btn, .download-btn {
+                margin-top: 0.5rem;
+                margin-left: 0;
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .guide-item {
+                padding: 1.5rem;
+            }
+        }
+    /* 加载动画样式 */
+    .loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--dark-bg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity var(--transition-medium), visibility var(--transition-medium);
+    }
+    
+    .loader {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .loader-logo-container {
+        position: relative;
+        width: 180px;
+        height: 180px;
+    }
+    
+    .loader-logo-outer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: var(--secondary-color);
+        border-bottom-color: var(--secondary-color);
+        animation: spin-clockwise 3s linear infinite;
+    }
+    
+    .loader-logo-inner {
+        position: absolute;
+        top: 30px;
+        left: 30px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-left-color: var(--accent-color);
+        border-right-color: var(--accent-color);
+        animation: spin-counterclockwise 2s linear infinite;
+    }
+    
+    .loader-logo-1 {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        width: 150px;
+        height: 150px;
+        background-image: url('./images/logo.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: logo-pulse 2s infinite ease-in-out;
+        opacity: 0.7;
+    }
+    
+    .loader-logo-2 {
+        position: absolute;
+        top: 45px;
+        left: 45px;
+        width: 90px;
+        height: 90px;
+        background-image: url('./images/logo.png');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: logo-pulse-reverse 2s infinite ease-in-out;
+        opacity: 0.9;
+    }
+    
+    .loader-text {
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: var(--white);
+        font-weight: bold;
+        letter-spacing: 1px;
+        animation: pulse 1.5s infinite;
+    }
+    
+    @keyframes spin-clockwise {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes spin-counterclockwise {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(-360deg);
+        }
+    }
+    
+    @keyframes logo-pulse {
+        0%, 100% {
+            transform: scale(1) rotate(0deg);
+            filter: brightness(1);
+        }
+        50% {
+            transform: scale(1.1) rotate(10deg);
+            filter: brightness(1.2);
+        }
+    }
+    
+    @keyframes logo-pulse-reverse {
+        0%, 100% {
+            transform: scale(1) rotate(0deg);
+            filter: brightness(1);
+        }
+        50% {
+            transform: scale(1.1) rotate(-10deg);
+            filter: brightness(1.3);
+        }
+    }
+    
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+    
+    .loader-hidden {
+        opacity: 0;
+        visibility: hidden;
+    }
+    </style>
+</head>
+<body>
+    <!-- 加载动画 -->
+    <div class="loader-wrapper">
+        <div class="loader">
+            <div class="loader-logo-container">
+                <div class="loader-logo-outer"></div>
+                <div class="loader-logo-inner"></div>
+                <div class="loader-logo-1"></div>
+                <div class="loader-logo-2"></div>
+            </div>
+            <div class="loader-text">AEGot 加载中...</div>
+        </div>
+    </div>
+    
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="./images/logo.png" alt="AEGot MC Logo" class="logo-img">
+            </a>
+            <button class="mobile-menu-btn">☰</button>
+            <nav id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li class="nav-group">
+                        <a href="javascript:void(0)">会员服务</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vip.html">VIP会员</a></li>
+                            <li><a href="donate.html">捐赠支持</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-group">
+                        <a href="javascript:void(0)">社区</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="message-board.html">留言板</a></li>
+                            <li><a href="leaderboard.html">玩家排行榜</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-group">
+                        <a href="javascript:void(0)">服务器</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#features">特色玩法</a></li>
+                            <li><a href="#guide">玩家指南</a></li>
+                            <li><a href="#join">加入我们</a></li>
+                            <li><a href="server-status.html">服务器状态</a></li>
+                            <li><a href="game.html">小游戏</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="donate.html" class="donate-link">捐赠支持 ❤️</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <img class="hero-bg" src="./images/hero-bg-animated.svg" alt="动态背景图像">
+        <div class="hero-overlay"></div>
+        
+        <!-- 浮动装饰元素 -->
+        <div class="floating-elements">
+            <div class="floating-cube floating-cube-1">🧱</div>
+            <div class="floating-cube floating-cube-2">⛏️</div>
+            <div class="floating-cube floating-cube-3">💎</div>
+            <div class="floating-cube floating-cube-4">🗡️</div>
+            <div class="floating-cube floating-cube-5">🏰</div>
+            <div class="floating-cube floating-cube-6">🌟</div>
+        </div>
+        
+        <div class="hero-content">
+            <h1>欢迎来到 AEGot 我的世界服务器</h1>
+            <p>一个充满创意与友谊的多人生存世界，等待你的探索与建设</p>
+            
+            <!-- 服务器状态卡片 -->
+            <div class="server-status-cards">
+                <div class="status-card">
+                    <div class="status-icon">🟢</div>
+                    <div class="status-info">
+                        <div class="status-label">服务器状态</div>
+                        <div class="status-value">在线运行</div>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-icon">👥</div>
+                    <div class="status-info">
+                        <div class="status-label">在线玩家</div>
+                        <div class="status-value" id="online-players">12/100</div>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-icon">⚡</div>
+                    <div class="status-info">
+                        <div class="status-label">服务器版本</div>
+                        <div class="status-value">1.20.1</div>
+                    </div>
+                </div>
+                <div class="status-card">
+                    <div class="status-icon">🏆</div>
+                    <div class="status-info">
+                        <div class="status-label">运行天数</div>
+                        <div class="status-value" id="uptime-days">365</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 主要按钮组 -->
+            <div class="hero-buttons">
+                <a href="#join" class="btn btn-accent">立即加入</a>
+                <a href="#features" class="btn">了解更多</a>
+            </div>
+            
+            <!-- 快速功能按钮 -->
+            <div class="quick-actions">
+                <a href="server-status.html" class="quick-btn" title="服务器状态">
+                    <span class="quick-icon">📊</span>
+                    <span class="quick-text">服务器状态</span>
+                </a>
+                <a href="leaderboard.html" class="quick-btn" title="玩家排行榜">
+                    <span class="quick-icon">🏅</span>
+                    <span class="quick-text">排行榜</span>
+                </a>
+                <a href="message-board.html" class="quick-btn" title="留言板">
+                    <span class="quick-icon">💬</span>
+                    <span class="quick-text">留言板</span>
+                </a>
+                <a href="game.html" class="quick-btn" title="小游戏">
+                    <span class="quick-icon">🎮</span>
+                    <span class="quick-text">小游戏</span>
+                </a>
+            </div>
+            
+            <!-- 服务器地址快速复制 -->
+            <div class="server-address-widget">
+                <div class="address-label">服务器地址</div>
+                <div class="address-container">
+                    <span class="address-text">mc.aegot.top</span>
+                    <button class="address-copy-btn" onclick="copyServerAddress()" title="复制服务器地址">
+                        📋
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>特色玩法</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('./images/p1.png');"></div>
+                    <div class="feature-content">
+                        <h3>纯净生存</h3>
+                        <p>我们提供最纯粹的生存体验，没有过多插件干扰游戏平衡，让你体验原汁原味的我的世界。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('./images/p2.png');"></div>
+                    <div class="feature-content">
+                        <h3>社区建设</h3>
+                        <p>玩家可以组建城镇，共同建设，打造属于自己的家园。我们鼓励合作与创意分享。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('./images/p3.png');"></div>
+                    <div class="feature-content">
+                        <h3>定期活动</h3>
+                        <p>服务器定期举办各类活动，如建筑比赛、探险挑战等，丰富玩家的游戏体验。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('./images/p4.png');"></div>
+                    <div class="feature-content">
+                        <h3>PVP竞技场</h3>
+                        <p>专门的PVP竞技场区域，玩家可以在这里一较高下，展示自己的战斗技巧和装备。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('./images/p5.png');"></div>
+                    <div class="feature-content">
+                        <h3>跑酷挑战</h3>
+                        <p>精心设计的跑酷地图，考验玩家的操作技巧和反应能力，成功通关还有丰厚奖励。</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('./images/p6.png');"></div>
+                    <div class="feature-content">
+                        <h3>经济系统</h3>
+                        <p>完善的经济系统，玩家可以通过交易、开店等方式获取游戏内货币，购买稀有物品。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="guide" class="guide">
+        <div class="container">
+            <div class="section-title">
+                <h2>玩家指南</h2>
+            </div>
+            <div class="guide-content">
+                <div class="guide-item">
+                    <h3><span>1</span>下载客户端</h3>
+                    <p>下载与服务器版本匹配的我的世界客户端，推荐使用官方启动器。</p>
+                    <div class="server-info" style="margin-top: 15px;">
+                        <p><strong>百度网盘：</strong></p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0;">
+                            <a href="https://pan.baidu.com/s/1FtD_3oJ4pSSxDJwAKFd9ng" target="_blank" class="download-btn">下载客户端</a> 
+                            <button class="copy-btn" onclick="copyText('https://pan.baidu.com/s/1FtD_3oJ4pSSxDJwAKFd9ng')">复制链接</button>
+                        </div>
+                        <p><strong>提取码：</strong> AEGO <button class="copy-btn" onclick="copyText('AEGO')">复制提取码</button></p>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <h3><span>2</span>连接服务器</h3>
+                    <p>在多人游戏中添加我们的服务器地址（<strong>mc.aegot.top</strong>），然后开始你的冒险吧！</p>
+                    <div class="server-info" style="margin-top: 15px;">
+                        <p><strong>服务器地址：</strong></p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0;">
+                            <span>mc.aegot.top</span>
+                            <button class="copy-btn" onclick="copyText('mc.aegot.top')">复制</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="guide-item">
+                    <h3><span>3</span>遵守规则</h3>
+                    <p>请遵守服务器规则，尊重其他玩家，共同维护良好的游戏环境。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="join" class="join">
+        <div class="container">
+            <div class="section-title">
+                <h2>加入我们</h2>
+            </div>
+            <div class="join-content">
+                <p>准备好加入我们的世界了吗？以下是服务器的连接信息：</p>
+                <div class="server-info">
+                    <p><strong>服务器地址：</strong></p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0;">
+                        <span>mc.aegot.top</span>
+                        <button class="copy-btn" onclick="copyText('mc.aegot.top')">复制</button>
+                    </div>
+                    <p><strong>游戏版本：</strong> 1.20.4</p>
+                    <p><strong>服务器类型：</strong> 纯净生存</p>
+                </div>
+                <p>如果你在连接过程中遇到任何问题，或者想了解更多信息，请加入我们的QQ群：</p>
+                <div class="server-info">
+                    <p><strong>QQ群：</strong></p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.5rem 0;">
+                        <span>1016019979</span>
+                        <button class="copy-btn" onclick="copyText('1016019979')">复制</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>关于我们</h3>
+                <p>AEGot是一个由热爱我的世界的玩家创建的服务器社区，致力于提供最好的多人游戏体验。</p>
+                <a href="./donate.html" class="btn btn-accent" style="margin-top: 15px; display: inline-block; animation: donate-pulse 2s infinite; font-weight: bold;">❤️ 捐赠支持</a>
+                <div class="social-links" style="margin-top: 15px;">
+                    <a href="https://blog.aegot.top/" target="_blank" title="AEGot博客">博客</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>快速链接</h3>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#features">特色玩法</a></li>
+                    <li><a href="#guide">玩家指南</a></li>
+                    <li><a href="#join">加入我们</a></li>
+                    <li><a href="server-status.html">服务器状态</a></li>
+                    <li><a href="message-board.html">留言板</a></li>
+                    <li><a href="vip.html">VIP会员</a></li>
+                    <li><a href="leaderboard.html">玩家排行榜</a></li>
+                    <li><a href="game.html">小游戏</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>联系我们</h3>
+                <ul class="nav-links">
+                    <li>QQ群：1016019979</li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://space.bilibili.com/519933429?spm_id_from=333.1007.0.0">B站</a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 AEGot Minecraft Server. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <script>
+        // 此处的移动端菜单切换代码已移至底部的导航菜单控制脚本中
+        
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // 如果是移动端，点击后关闭菜单
+                if (window.innerWidth <= 768) {
+                    document.getElementById('main-nav').classList.remove('active');
+                }
+            });
+        });
+        
+        // 复制文本功能
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                // 创建一个临时提示元素
+                const notification = document.createElement('div');
+                notification.textContent = '已复制到剪贴板：' + text;
+                notification.style.position = 'fixed';
+                notification.style.bottom = '20px';
+                notification.style.left = '50%';
+                notification.style.transform = 'translateX(-50%)';
+                notification.style.backgroundColor = 'var(--secondary-color)';
+                notification.style.color = 'white';
+                notification.style.padding = '10px 20px';
+                notification.style.borderRadius = 'var(--border-radius)';
+                notification.style.boxShadow = 'var(--shadow-md)';
+                notification.style.zIndex = '9999';
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.3s ease';
+                
+                document.body.appendChild(notification);
+                
+                // 显示通知
+                setTimeout(() => {
+                    notification.style.opacity = '1';
+                }, 10);
+                
+                // 3秒后移除通知
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }, function() {
+                alert('复制失败，请手动复制');
+            });
+        }
+        
+        // 滚动时改变导航栏样式
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('header').style.backgroundColor = 'rgba(30, 41, 59, 0.95)';
+                document.querySelector('header').style.boxShadow = 'var(--shadow-lg)';
+            } else {
+                document.querySelector('header').style.backgroundColor = 'rgba(26, 34, 56, 0.95)';
+                document.querySelector('header').style.boxShadow = 'var(--shadow-md)';
+            }
+            
+            // 设置当前活跃的导航链接
+            const sections = document.querySelectorAll('section[id]');
+            let scrollY = window.pageYOffset;
+            
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 100;
+                const sectionId = current.getAttribute('id');
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelector('.nav-links a[href*=' + sectionId + ']').classList.add('active');
+                } else {
+                    document.querySelector('.nav-links a[href*=' + sectionId + ']')?.classList.remove('active');
+                }
+            });
+        });
+        
+        // 添加滚动动画
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.feature-card, .guide-item, .server-info, .section-title');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate');
+                } else {
+                    element.classList.remove('animate');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // 初始调用一次以处理页面加载时可见的元素
+        window.addEventListener('load', animateOnScroll);
+        
+        // 复制服务器地址功能
+        function copyServerAddress() {
+            copyText('mc.aegot.top');
+        }
+        
+        // 动态更新在线玩家数量（模拟）
+        function updateOnlinePlayerCount() {
+            const playerCountElement = document.getElementById('online-players');
+            if (playerCountElement) {
+                // 模拟在线玩家数量变化（实际项目中应该从服务器API获取）
+                const baseCount = 8;
+                const variation = Math.floor(Math.random() * 8) + 1;
+                const currentCount = baseCount + variation;
+                playerCountElement.textContent = `${currentCount}/100`;
+            }
+        }
+        
+        // 动态更新运行天数
+        function updateUptimeDays() {
+            const uptimeElement = document.getElementById('uptime-days');
+            if (uptimeElement) {
+                // 计算从服务器开始运行到现在的天数（假设开始日期）
+                const startDate = new Date('2023-01-01');
+                const currentDate = new Date();
+                const diffTime = Math.abs(currentDate - startDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                uptimeElement.textContent = diffDays;
+            }
+        }
+        
+        // 页面加载完成后初始化动态内容
+        window.addEventListener('load', function() {
+            updateOnlinePlayerCount();
+            updateUptimeDays();
+            
+            // 每30秒更新一次在线玩家数量
+            setInterval(updateOnlinePlayerCount, 30000);
+        });
+        
+        // 添加状态卡片点击效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusCards = document.querySelectorAll('.status-card');
+            statusCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // 添加点击动画效果
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+            
+            // 为快速按钮添加点击反馈
+            const quickBtns = document.querySelectorAll('.quick-btn');
+            quickBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    // 创建涟漪效果
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                    `;
+                    
+                    this.style.position = 'relative';
+                    this.style.overflow = 'hidden';
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+        
+        // 添加涟漪动画CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+    
+    <!-- 加载动画控制脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取加载动画元素
+            const loaderWrapper = document.querySelector('.loader-wrapper');
+            
+            // 页面加载完成后，添加隐藏类
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    loaderWrapper.classList.add('loader-hidden');
+                }, 800); // 延迟800毫秒后隐藏，让用户能看到动画
+            });
+        });
+    </script>
+    
+    <!-- 导航菜单控制脚本 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mainNav = document.getElementById('main-nav');
+            const navGroups = document.querySelectorAll('.nav-group');
+            
+            // 移动端菜单切换
+            if (mobileMenuBtn && mainNav) {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation(); // 阻止事件冒泡
+                    mainNav.classList.toggle('active');
+                    if (mainNav.classList.contains('active')) {
+                        mobileMenuBtn.innerHTML = '✕';
+                        document.body.style.overflow = 'hidden'; // 防止背景滚动
+                    } else {
+                        mobileMenuBtn.innerHTML = '☰';
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+            
+            // 移动端下拉菜单控制
+            const isMobile = () => window.innerWidth <= 768;
+            
+            navGroups.forEach(group => {
+                const groupLink = group.querySelector('a');
+                
+                groupLink.addEventListener('click', function(e) {
+                    if (isMobile()) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        // 切换当前下拉菜单的状态
+                        group.classList.toggle('active');
+                        
+                        // 关闭其他打开的下拉菜单
+                        navGroups.forEach(otherGroup => {
+                            if (otherGroup !== group && otherGroup.classList.contains('active')) {
+                                otherGroup.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // 点击下拉菜单内的链接后关闭移动菜单
+            const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (isMobile() && mainNav) {
+                        setTimeout(() => {
+                            mainNav.classList.remove('active');
+                            mobileMenuBtn.innerHTML = '☰';
+                            document.body.style.overflow = '';
+                            
+                            // 关闭所有下拉菜单
+                            navGroups.forEach(group => {
+                                group.classList.remove('active');
+                            });
+                        }, 100); // 短暂延迟以确保链接点击事件完成
+                    }
+                });
+            });
+            
+            // 点击普通导航链接后关闭移动菜单
+            const navLinks = document.querySelectorAll('.nav-links > li > a:not(.nav-group > a)');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (isMobile() && mainNav && mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '☰';
+                        document.body.style.overflow = '';
+                    }
+                });
+            });
+            
+            // 点击页面其他区域关闭移动菜单
+            document.addEventListener('click', function(e) {
+                if (isMobile() && mainNav && mainNav.classList.contains('active')) {
+                    // 检查点击是否在导航菜单外部
+                    if (!mainNav.contains(e.target) && e.target !== mobileMenuBtn) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '☰';
+                        document.body.style.overflow = '';
+                        
+                        // 关闭所有下拉菜单
+                        navGroups.forEach(group => {
+                            group.classList.remove('active');
+                        });
+                    }
+                }
+            });
+            
+            // 窗口大小变化时处理
+            window.addEventListener('resize', function() {
+                if (!isMobile()) {
+                    // 在非移动设备模式下重置所有状态
+                    if (mainNav && mainNav.classList.contains('active')) {
+                        mainNav.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '☰';
+                        document.body.style.overflow = '';
+                    }
+                    
+                    // 关闭所有下拉菜单
+                    navGroups.forEach(group => {
+                        group.classList.remove('active');
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/logo.png" type="image/png">
+    <title>服务器状态 - AEGot 我的世界服务器</title>
+    <style>
+        :root {
+            --primary-color: #1A2238;
+            --secondary-color: #4D77FF;
+            --accent-color: #FF6B6B;
+            --text-color: #334155;
+            --light-bg: #F8FAFC;
+            --dark-bg: #0F172A;
+            --white: #FFFFFF;
+            --gradient-primary: linear-gradient(135deg, #4D77FF, #2563EB);
+            --gradient-accent: linear-gradient(135deg, #FF6B6B, #E11D48);
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 6px 12px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 15px 25px -3px rgba(0, 0, 0, 0.1), 0 8px 12px -2px rgba(0, 0, 0, 0.05);
+            --border-radius: 10px;
+            --transition-fast: 0.3s ease;
+            --transition-medium: 0.5s ease;
+            --transition-slow: 0.8s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%234D77FF' fill-opacity='0.03'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        header {
+            background-color: rgba(26, 34, 56, 0.95);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 30px;
+            }
+            
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                font-size: 1.4rem;
+            }
+            
+            nav {
+                display: none;
+            }
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+            padding: 0.5rem 0.8rem;
+            border-radius: var(--border-radius);
+            position: relative;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-image: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+        
+        nav ul li a:hover {
+            color: var(--white);
+        }
+        
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        /* 捐赠链接特殊样式 */
+        .donate-link {
+            color: var(--accent-color) !important;
+            font-weight: 600;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .donate-link::after {
+            background-image: var(--gradient-accent) !important;
+        }
+        
+        .donate-link:hover {
+            transform: scale(1.05);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            letter-spacing: 0.5px;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            display: inline-block;
+            position: relative;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background-image: var(--gradient-primary);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        
+        .section-title:hover h2::after {
+            width: 80%;
+        }
+        
+        /* 服务器状态卡片 */
+        .status-card {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all var(--transition-medium);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .status-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-image: var(--gradient-primary);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s ease;
+        }
+        
+        .status-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .status-card:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .status-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .status-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+        
+        .status-indicator {
+            display: flex;
+            align-items: center;
+        }
+        
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-online {
+            background-color: #10B981;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+        }
+        
+        .status-offline {
+            background-color: #EF4444;
+            box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
+        }
+        
+        .status-loading {
+            background-color: #F59E0B;
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.6);
+            animation: pulse 1.5s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .server-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .info-item {
+            background-color: rgba(77, 119, 255, 0.05);
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            transition: all var(--transition-fast);
+        }
+        
+        .info-item:hover {
+            background-color: rgba(77, 119, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .info-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+        
+        .info-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* 玩家列表 */
+        .players-list {
+            margin-top: 2rem;
+        }
+        
+        .player-item {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 0.8rem;
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-fast);
+        }
+        
+        .player-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow-md);
+            background-color: rgba(77, 119, 255, 0.05);
+        }
+        
+        .player-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            margin-right: 1rem;
+            background-color: var(--light-bg);
+            overflow: hidden;
+        }
+        
+        .player-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .player-info {
+            flex: 1;
+        }
+        
+        .player-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+        
+        .player-status {
+            font-size: 0.85rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        
+        .player-time {
+            font-size: 0.85rem;
+            color: var(--secondary-color);
+        }
+        
+        /* 排行榜 */
+        .leaderboard {
+            margin-top: 3rem;
+        }
+        
+        .leaderboard-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+            cursor: pointer;
+            position: relative;
+            transition: all var(--transition-fast);
+            opacity: 0.7;
+        }
+        
+        .tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-image: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+            opacity: 1;
+        }
+        
+        .tab-btn.active::after {
+            transform: scaleX(1);
+        }
+        
+        .tab-btn:hover {
+            opacity: 1;
+        }
+        
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .leaderboard-table th {
+            text-align: left;
+            padding: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background-color: rgba(77, 119, 255, 0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .leaderboard-table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .leaderboard-table tr:hover td {
+            background-color: rgba(77, 119, 255, 0.05);
+        }
+        
+        .rank {
+            font-weight: 700;
+            width: 50px;
+        }
+        
+        .rank-1, .rank-2, .rank-3 {
+            font-size: 1.2rem;
+        }
+        
+        .rank-1 {
+            color: #FFD700;
+        }
+        
+        .rank-2 {
+            color: #C0C0C0;
+        }
+        
+        .rank-3 {
+            color: #CD7F32;
+        }
+        
+        .player-row {
+            display: flex;
+            align-items: center;
+        }
+        
+        .player-row img {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            margin-right: 10px;
+        }
+        
+        .refresh-btn {
+            background-image: var(--gradient-primary);
+            color: var(--white);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all var(--transition-fast);
+            box-shadow: var(--shadow-sm);
+            margin-top: 1rem;
+        }
+        
+        .refresh-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .refresh-btn:active {
+            transform: translateY(0);
+        }
+        
+        .refresh-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .refresh-btn:hover .refresh-icon {
+            transform: rotate(180deg);
+        }
+        
+        .no-data {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+        
+        /* 加载动画 */
+        .loading-spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(77, 119, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .server-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .leaderboard-table th:nth-child(3),
+            .leaderboard-table td:nth-child(3) {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .server-info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .leaderboard-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+                padding-bottom: 5px;
+            }
+            
+            .tab-btn {
+                padding: 0.8rem 1rem;
+            }
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 0 3rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: all var(--transition-fast);
+            opacity: 0.8;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            opacity: 0.6;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="./images/logo.png" alt="AEGot 服务器" class="logo-img">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="index.html#features">特色玩法</a></li>
+                    <li><a href="index.html#guide">玩家指南</a></li>
+                    <li><a href="index.html#join">加入我们</a></li>
+                    <li><a href="server-status.html" class="active">服务器状态</a></li>
+                    <li><a href="leaderboard.html">玩家排行榜</a></li>
+                    <li><a href="donate.html" class="donate-link">捐赠支持 ❤️</a></li>
+                </ul>
+            </nav>
+            <a href="./index.html" class="back-btn">返回主页</a>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <div class="section-title">
+                <h2>服务器状态</h2>
+            </div>
+            
+            <div class="status-card">
+                <div class="status-header">
+                    <h3>实时状态</h3>
+                    <div class="status-indicator">
+                        <div id="status-dot" class="status-dot status-loading"></div>
+                        <span id="status-text">正在检查...</span>
+                    </div>
+                </div>
+                
+                <div class="server-info-grid">
+                    <div class="info-item">
+                        <div class="info-label">在线玩家</div>
+                        <div id="online-players" class="info-value">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">最大玩家数</div>
+                        <div id="max-players" class="info-value">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">服务器版本</div>
+                        <div id="server-version" class="info-value">-</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">运行时间</div>
+                        <div id="uptime" class="info-value">-</div>
+                    </div>
+                </div>
+                
+                <button id="refresh-status" class="refresh-btn">
+                    <span class="refresh-icon">🔄</span> 刷新状态
+                </button>
+            </div>
+            
+            <div class="players-list">
+                <div class="section-title">
+                    <h2>在线玩家</h2>
+                </div>
+                <div id="players-container">
+                    <div class="no-data">正在加载玩家数据...</div>
+                </div>
+            </div>
+            
+            <div class="leaderboard">
+                <div class="section-title">
+                    <h2>玩家排行榜</h2>
+                </div>
+                
+                <div class="leaderboard-tabs">
+                    <button class="tab-btn active" data-tab="playtime">游戏时长</button>
+                    <button class="tab-btn" data-tab="kills">击杀数</button>
+                    <button class="tab-btn" data-tab="deaths">死亡数</button>
+                    <button class="tab-btn" data-tab="blocks">放置方块</button>
+                </div>
+                
+                <div id="leaderboard-container">
+                    <table class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>排名</th>
+                                <th>玩家</th>
+                                <th>游戏时长</th>
+                                <th>最后在线</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <tr>
+                                <td colspan="4" class="no-data">正在加载排行榜数据...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="index.html#features">特色玩法</a>
+                <a href="index.html#guide">玩家指南</a>
+                <a href="index.html#join">加入我们</a>
+                <a href="server-status.html">服务器状态</a>
+                <a href="donate.html">捐赠支持</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 AEGot 我的世界服务器 - 保留所有权利
+            </div>
+        </div>
+    </footer>
+
+    <!-- 引入服务器API脚本 -->
+    <script src="./js/server-api.js"></script>
+</body>
+</html>
